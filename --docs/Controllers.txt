@@ -1,0 +1,23 @@
+┌─────────────────────────────────────────┐
+│  KRaft Controllers (Metadata Layer)     │
+│  ┌───────────┬───────────┬───────────┐  │
+│  │Controller1│Controller2│Controller3│  │
+│  │  (Node 1) │  (Node 2) │  (Node 3) │  │
+│  └─────┬─────┴─────┬─────┴─────┬─────┘  │
+│        │           │           │        │
+│     One of these becomes                │
+│     "Active Metadata Controller"        │
+└─────────────────────────────────────────┘
+                    ↓
+         Metadata stored in Raft log
+                    ↓
+┌─────────────────────────────────────────┐
+│  Brokers (Data Layer)                   │
+│  ┌─────────┬─────────┬─────────┐        │
+│  │Broker 4 │Broker 5 │Broker 6 │        │
+│  │(Leader) │         │         │        │
+│  └────┬────┴─────────┴─────────┘        │
+│       │                                 │
+│  Broker 4 is "Cluster Controller"       │
+│  (Chosen by Controllers 1,2,3)          │
+└─────────────────────────────────────────┘
