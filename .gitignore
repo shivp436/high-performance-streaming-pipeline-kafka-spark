@@ -1,0 +1,19 @@
+__pycache__
+.venv
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+
+# Python files
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+dist/
+build/
+.eggs/
+
